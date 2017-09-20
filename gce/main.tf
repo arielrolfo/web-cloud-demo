@@ -1,7 +1,7 @@
 // Configure the Google Cloud provider
 provider "google" {
-  credentials = "${file("account.json")}"
-  project     = "gce-web-cloud-demo"
+  credentials = "${file("webdemo-8420a22804ea.json")}"
+  project     = "webdemo-180503"
   region      = "us-central1"
 }
 
@@ -15,12 +15,13 @@ resource "google_compute_instance" "default" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-1604"
+      image = "ubuntu-1604-lts"
     }
   }
 
   network_interface {
-    network = "default"
+    network       = "default"
+    access_config = {}
   }
 
   metadata {
